@@ -1,9 +1,6 @@
 package com.haulmont.testtask;
 
-import com.haulmont.db.classes.Group;
-import com.haulmont.db.classes.GroupDAO;
-import com.haulmont.db.classes.Student;
-import com.haulmont.db.classes.StudentDAO;
+import com.haulmont.db.classes.*;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -34,6 +31,11 @@ public class MainUI extends UI {
         getPage().setTitle("test");
 
         Navigator navigator = new Navigator(this,this);
+
+        DbCreate dbCreate = new DbCreate();
+
+        dbCreate.executeScript("TableGroupsCreate.sql");
+        dbCreate.executeScript("UpdateTable.sql");
 
         StudentDAO studentDAO = new StudentDAO();
 
