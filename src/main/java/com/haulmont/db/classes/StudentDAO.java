@@ -1,11 +1,7 @@
 package com.haulmont.db.classes;
 
 import com.haulmont.testtask.StudentsView;
-import com.vaadin.ui.Notification;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -14,7 +10,7 @@ public class StudentDAO {
     private String dbUrl = "jdbc:hsqldb:file:/src/main/java/com/haulmont/db/";
     private String user = "SA";
     private String password = "";
-    GroupDAO groupDAO = new GroupDAO();
+    private GroupDAO groupDAO = new GroupDAO();
 
     private Connection connection;
 
@@ -22,9 +18,7 @@ public class StudentDAO {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
             connection = DriverManager.getConnection(dbUrl, user, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

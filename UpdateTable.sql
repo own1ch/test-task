@@ -1,2 +1,2 @@
-INSERT INTO GROUPS(GROUP_NUMBER, FACULTY) values('МП-401', 'Математический');
-INSERT INTO students (name, surname, secondname, BIRTHDAY, GROUP_ID) values ('Eremin', 'Vitalii', 'Alexeevich', '1997-01-28', '0');
+INSERT INTO GROUPS(GROUP_NUMBER, FACULTY) values('MP-401', 'Mathematicaly');
+INSERT INTO students (surname, name, secondname, BIRTHDAY, GROUP_ID) values ('Eremin', 'Vitalii', 'Alexeevich', '1997-01-28', '0');

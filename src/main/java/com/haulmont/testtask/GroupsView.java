@@ -13,12 +13,7 @@ import java.util.ArrayList;
 
 public class GroupsView extends VerticalLayout implements View {
 
-    Connection con;
-    PreparedStatement ps;
-    Statement cs;
-    ResultSet rs;
-    String dbUrl = "jdbc:hsqldb:file:tmp/testdb";
-    Property itemProperty;
+    private Property itemProperty;
 
     Table table;
 

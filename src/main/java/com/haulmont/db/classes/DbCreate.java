@@ -11,7 +11,7 @@ public class DbCreate {
     private String dbUrl = "jdbc:hsqldb:file:/src/main/java/com/haulmont/db/";
     private String user = "SA";
     private String password = "";
-    Connection connection;
+    private Connection connection;
 
     public DbCreate() {
 
@@ -19,15 +19,13 @@ public class DbCreate {
             Class.forName("org.hsqldb.jdbcDriver");
             connection = DriverManager.getConnection(dbUrl, user, password);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public void executeScript(String filename) {
-        String script = "";
+    public boolean executeScript(String filename) {
+        String script;
 
         try {
             FileInputStream fstream = new FileInputStream(filename);
@@ -46,11 +44,12 @@ public class DbCreate {
                 connection.commit();
             }
 
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return false;
         }
+
+        return true;
     }
 
 }

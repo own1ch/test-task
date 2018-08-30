@@ -1,7 +1,12 @@
 package com.haulmont.testtask;
 
-import com.haulmont.db.classes.Group;
-import com.haulmont.db.classes.GroupDAO;
+/**
+ *
+ * Сделано Ереминым Виталием 30.08.2018
+ *
+*/
+
+import com.haulmont.db.classes.DbCreate;
 import com.haulmont.db.classes.Student;
 import com.haulmont.db.classes.StudentDAO;
 import com.vaadin.data.Property;
@@ -15,12 +20,8 @@ import java.util.ArrayList;
 
 public class StudentsView extends VerticalLayout implements View {
 
-
-    Statement cs;
-    ResultSet rs;
-
-    Property itemProperty;
-    Table table;
+    private Property itemProperty;
+    private Table table;
 
     public static String id;
     static String surName;
@@ -31,8 +32,7 @@ public class StudentsView extends VerticalLayout implements View {
 
     static Boolean editStudents = false;
 
-    static StudentDAO studentDAO = new StudentDAO();
-    static GroupDAO groupDAO = new GroupDAO();
+    private static StudentDAO studentDAO = new StudentDAO();
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
@@ -40,6 +40,11 @@ public class StudentsView extends VerticalLayout implements View {
     }
 
     public StudentsView() {
+
+        DbCreate dbCreate = new DbCreate();
+
+        if(dbCreate.executeScript("TableGroupsCreate.sql"))
+            dbCreate.executeScript("UpdateTable.sql");
 
         HorizontalLayout hl = new HorizontalLayout();
 

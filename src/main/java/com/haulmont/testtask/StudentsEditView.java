@@ -27,8 +27,6 @@ public class StudentsEditView extends VerticalLayout implements View {
     TextField birthDay;
     ComboBox comboBox;
 
-    Long temp;
-
     GroupDAO groupDAO = new GroupDAO();
     StudentDAO studentDAO = new StudentDAO();
 
